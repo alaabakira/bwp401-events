@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!-- لغة عربية واتجاه من اليمين لليسار -->
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <!-- يخلي الصفحة تتجاوب مع شاشة الجوال -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="تفاصيل الفعالية: الموعد والمكان والوصف والحجز.">
+  <title>تفاصيل الفعالية | دليل فعاليات الجامعة الافتراضية</title>
+
+  <!-- خط Cairo من Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap RTL عبر CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- أيقونات Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- ملفنا الخاص: بعد Bootstrap حتى يعدّل عليه -->
+  <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============ HEADER: الشعار + شريط التنقل ============ -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-navbar" aria-label="القائمة الرئيسية">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-calendar2-event"></i></span>
+          <span>
+            <span class="brand-name">دليل الفعاليات</span>
+            <span class="brand-sub">الجامعة الافتراضية السورية</span>
+          </span>
+        </a>
+
+        <!-- زر الوضع الليلي + زر الهمبرغر: يبقيان ظاهرين على الجوال -->
+        <div class="d-flex align-items-center gap-2 order-lg-last ms-lg-3">
+          <button id="themeToggle" class="btn-icon" type="button" aria-label="تفعيل الوضع الليلي">
+            <i class="bi bi-moon-stars"></i>
+          </button>
+          <!-- زر الهمبرغر للجوال، يفتح العنصر اللي id تبعه mainNav -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#mainNav" aria-controls="mainNav"
+                  aria-expanded="false" aria-label="فتح القائمة">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link" href="events.html">كل الفعاليات</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">عن الدليل</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <!-- id="eventPage" يخبر main.js أن هذه صفحة التفاصيل -->
+  <main id="eventPage">
+
+    <!-- القسم 1: عنوان الفعالية وأزرارها (مخفي حتى نتأكد من وجود الفعالية) -->
+    <section class="page-hero event-section d-none">
+      <div class="container">
+        <nav aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="events.html">الفعاليات</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="breadcrumbTitle"></li>
+          </ol>
+        </nav>
+        <span class="badge cat-badge" id="eventCategory"></span>
+        <h1 id="eventTitle" class="mt-2"></h1>
+        <div class="event-hero-meta">
+          <span><i class="bi bi-calendar3"></i><span id="eventDate"></span></span>
+          <span><i class="bi bi-clock"></i><span id="eventTime"></span></span>
+          <span><i class="bi bi-geo-alt"></i><span id="eventLocation"></span></span>
+        </div>
+        <div class="event-actions">
+          <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#bookingModal">
+            <i class="bi bi-ticket-perforated"></i> احجز مقعدك
+          </button>
+          <button type="button" class="btn btn-outline-brand" id="calendarBtn">
+            <i class="bi bi-calendar-plus"></i> أضف للتقويم
+          </button>
+          <button type="button" class="btn btn-outline-brand" id="shareBtn">
+            <i class="bi bi-share"></i> شارك
+          </button>
+        </div>
+        <!-- يظهر فقط إذا المتصفح لا يدعم المشاركة أو النسخ التلقائي -->
+        <div id="shareFallback" class="share-fallback d-none">
+          <label for="shareUrl" class="form-label">انسخ رابط الفعالية:</label>
+          <input type="text" id="shareUrl" class="form-control" readonly dir="ltr">
+        </div>
+      </div>
+    </section>
+
+    <!-- القسم 2: الصور والوصف + بطاقة المعلومات والخريطة -->
+    <section class="section event-section d-none">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <img id="eventImage" class="event-main-image" src="assets/img/event-1.jpg" alt="">
+            <div class="gallery-grid" id="eventGallery"></div>
+
+            <h2 class="h3 mt-5 mb-3">عن الفعالية</h2>
+            <p class="event-description" id="eventDescription"></p>
+          </div>
+
+          <aside class="col-lg-4">
+            <div class="info-card mb-4">
+              <h2 class="h5 mb-2">معلومات سريعة</h2>
+              <ul class="info-list">
+                <li><span class="info-icon"><i class="bi bi-calendar3"></i></span><div><small>التاريخ</small><strong id="infoDate"></strong></div></li>
+                <li><span class="info-icon"><i class="bi bi-clock"></i></span><div><small>الوقت</small><strong id="infoTime"></strong></div></li>
+                <li><span class="info-icon"><i class="bi bi-geo-alt"></i></span><div><small>المكان</small><strong id="infoLocation"></strong></div></li>
+                <li><span class="info-icon"><i class="bi bi-tag"></i></span><div><small>التصنيف</small><strong id="infoCategory"></strong></div></li>
+                <li><span class="info-icon"><i class="bi bi-hourglass-split"></i></span><div><small>الموعد</small><strong id="infoCountdown"></strong></div></li>
+              </ul>
+            </div>
+
+            <!-- خريطة ثابتة (صورة) + رابط لخرائط Google -->
+            <div class="map-box mb-3">
+              <img src="assets/img/map.jpg" alt="خريطة ثابتة لموقع الفعالية في دمشق">
+              <i class="bi bi-geo-alt-fill map-pin" aria-hidden="true"></i>
+              <span class="map-credit">© OpenStreetMap</span>
+              <span class="map-label" id="mapLabel"></span>
+            </div>
+            <a id="mapLink" href="https://www.google.com/maps" target="_blank" rel="noopener" class="btn btn-outline-brand w-100 mb-2">
+              <i class="bi bi-map"></i> افتح الموقع في خرائط Google
+            </a>
+            <button type="button" class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#bookingModal">
+              احجز مقعدك الآن
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- القسم 3: فعاليات ذات صلة -->
+    <section class="section pt-0 event-section d-none">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">من نفس التصنيف</span>
+            <h2 class="section-title">فعاليات ذات صلة</h2>
+          </div>
+          <a href="events.html" class="link-arrow">كل الفعاليات <i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="row g-4" id="relatedGrid"></div>
+      </div>
+    </section>
+
+    <!-- رسالة الفعالية غير موجودة (إذا كان الرابط بدون id أو id خاطئ) -->
+    <section id="notFound" class="section d-none">
+      <div class="container">
+        <div class="empty-state">
+          <i class="bi bi-calendar-x"></i>
+          <h1 class="h3 mt-3">عذراً، لم نجد هذه الفعالية</h1>
+          <p class="text-muted-soft">ربما تم حذفها أو أن الرابط غير صحيح.</p>
+          <a href="events.html" class="btn btn-brand">تصفّح كل الفعاليات</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Bootstrap Modal: نموذج حجز وهمي ============ -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="bookingModalLabel">حجز مقعد</h2>
+          <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted-soft small mb-3">الفعالية: <strong id="bookingEventTitle"></strong></p>
+
+          <!-- novalidate: نوقف تحقق المتصفح الافتراضي ونستعمل تحققنا بـ JavaScript -->
+          <form id="bookingForm" novalidate>
+            <div class="mb-3">
+              <label for="bookingName" class="form-label">الاسم الكامل</label>
+              <input type="text" id="bookingName" class="form-control" autocomplete="name">
+              <div class="invalid-feedback">يرجى كتابة الاسم (3 أحرف على الأقل).</div>
+            </div>
+            <div class="mb-3">
+              <label for="bookingEmail" class="form-label">البريد الإلكتروني</label>
+              <input type="email" id="bookingEmail" class="form-control" dir="ltr" autocomplete="email" placeholder="name@example.com">
+              <div class="invalid-feedback">يرجى كتابة بريد إلكتروني صحيح.</div>
+            </div>
+            <div class="mb-4">
+              <label for="bookingSeats" class="form-label">عدد المقاعد</label>
+              <select id="bookingSeats" class="form-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-brand w-100">تأكيد الحجز</button>
+            <p class="text-muted-soft small text-center mt-2 mb-0">حجز تجريبي لأغراض المشروع، لا يتم إرسال أي بيانات.</p>
+          </form>
+
+          <!-- رسالة نجاح الحجز (مخفية حتى يتم الإرسال) -->
+          <div id="bookingSuccess" class="text-center py-3 d-none">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+            <h3 class="h5 mt-2">تم تأكيد حجزك!</h3>
+            <p class="mb-1">رقم الحجز: <strong id="bookingNumber" dir="ltr"></strong></p>
+            <p class="text-muted-soft">عدد المقاعد: <span id="bookingSeatsText"></span></p>
+            <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">إغلاق</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Toast: رسالة صغيرة بعد النسخ أو تحميل ملف التقويم -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="siteToast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage"></div>
+        <button type="button" class="btn-close m-auto ms-2" data-bs-dismiss="toast" aria-label="إغلاق"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER: التواصل + حقوق النشر + فريق العمل ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="brand mb-3" href="index.html">
+            <span class="brand-mark" aria-hidden="true"><i class="bi bi-calendar2-event"></i></span>
+            <span>
+              <span class="brand-name">دليل الفعاليات</span>
+              <span class="brand-sub">الجامعة الافتراضية السورية</span>
+            </span>
+          </a>
+          <p>دليل يجمع فعاليات الجامعة الافتراضية السورية وفعاليات المدينة في مكان واحد، حتى لا تفوتك أي ندوة أو ورشة أو أمسية.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="إنستغرام"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="يوتيوب"><i class="bi bi-youtube"></i></a>
+            <a href="https://telegram.org/" target="_blank" rel="noopener" aria-label="تلغرام"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2>روابط سريعة</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="events.html">كل الفعاليات</a></li>
+            <li><a href="about.html">عن الدليل</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2>تواصل معنا</h2>
+          <ul class="footer-links">
+            <li><i class="bi bi-envelope ms-2"></i><a href="mailto:events@example.edu">events@example.edu</a></li>
+            <li><i class="bi bi-telephone ms-2"></i><a href="tel:+963110000000" dir="ltr">+963 11 000 0000</a></li>
+            <li><i class="bi bi-geo-alt ms-2"></i>دمشق - سوريا</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2>فريق المشروع</h2>
+          <!-- ===== أسماء فريق العمل وأرقامهم الجامعية (شرط إلزامي): عدّلها هنا ===== -->
+          <ul class="team-list">
+            <li><span class="member-name">وسام</span><span class="member-id">ID: Wesam_291213</span></li>
+            <li><span class="member-name">ياسمين</span><span class="member-id">ID: yasmine_305124</span></li>
+            <li><span class="member-name">علاء بكيره</span><span class="member-id">ID: alaa_241456</span></li>
+          </ul>
+          <!-- ===== نهاية أسماء الفريق ===== -->
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">© 2026 دليل فعاليات الجامعة الافتراضية. جميع الحقوق محفوظة.</p>
+        <p class="mb-0">مشروع مقرر BWP401 - الجامعة الافتراضية السورية</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- زر الرجوع لأعلى الصفحة (يظهر بعد النزول) -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="الرجوع للأعلى">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap JS: لازم للهمبرغر والسلايدر والـ Modal والـ Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- البيانات أولاً، ثم الكود الذي يستخدمها -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

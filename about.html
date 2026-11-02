@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- لغة عربية واتجاه من اليمين لليسار -->
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <!-- يخلي الصفحة تتجاوب مع شاشة الجوال -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="هدف الدليل ورؤيته وفريق العمل وسياسات نشر الفعاليات.">
+  <title>عن الدليل | دليل فعاليات الجامعة الافتراضية</title>
+
+  <!-- خط Cairo من Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap RTL عبر CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- أيقونات Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- ملفنا الخاص: بعد Bootstrap حتى يعدّل عليه -->
+  <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============ HEADER: الشعار + شريط التنقل ============ -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-navbar" aria-label="القائمة الرئيسية">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-calendar2-event"></i></span>
+          <span>
+            <span class="brand-name">دليل الفعاليات</span>
+            <span class="brand-sub">الجامعة الافتراضية السورية</span>
+          </span>
+        </a>
+
+        <!-- زر الوضع الليلي + زر الهمبرغر: يبقيان ظاهرين على الجوال -->
+        <div class="d-flex align-items-center gap-2 order-lg-last ms-lg-3">
+          <button id="themeToggle" class="btn-icon" type="button" aria-label="تفعيل الوضع الليلي">
+            <i class="bi bi-moon-stars"></i>
+          </button>
+          <!-- زر الهمبرغر للجوال، يفتح العنصر اللي id تبعه mainNav -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#mainNav" aria-controls="mainNav"
+                  aria-expanded="false" aria-label="فتح القائمة">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link" href="events.html">كل الفعاليات</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html">عن الدليل</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- رأس الصفحة -->
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+            <li class="breadcrumb-item active" aria-current="page">عن الدليل</li>
+          </ol>
+        </nav>
+        <h1>عن الدليل</h1>
+        <p class="lead">منصة طلابية بسيطة تجمع فعاليات الجامعة والمدينة، وتساعدك تعرف ماذا يحدث ومتى وأين.</p>
+      </div>
+    </section>
+
+    <!-- القسم 1: الهدف والرؤية والرسالة -->
+    <section class="section">
+      <div class="container">
+        <div class="row g-4 align-items-center mb-5">
+          <div class="col-lg-6">
+            <span class="eyebrow">لماذا هذا الدليل؟</span>
+            <h2 class="section-title mb-3">لأن الفعاليات الجميلة تضيع بين المجموعات والمنشورات</h2>
+            <p class="text-muted-soft mb-0">طلاب الجامعة الافتراضية موزّعون في كل مكان، وكثير منهم يسمع عن الندوة أو الورشة بعد انتهائها. لذلك بنينا دليلاً واحداً واضحاً، يعرض كل فعالية بتاريخها ومكانها وتفاصيلها، ويسمح بإضافتها للتقويم ومشاركتها بضغطة زر.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="assets/img/event-5.jpg" alt="كتاب مفتوح على طاولة" class="event-main-image" loading="lazy">
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="value-card">
+              <span class="value-num">01</span>
+              <h3>الهدف</h3>
+              <p>تسهيل الوصول إلى فعاليات الجامعة والمدينة، وتشجيع الطلاب على المشاركة والتواصل خارج قاعات الدراسة الافتراضية.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="value-card">
+              <span class="value-num">02</span>
+              <h3>الرؤية</h3>
+              <p>أن يكون الدليل المرجع الأول لكل طالب يبحث عن نشاط مفيد أو ممتع، في الجامعة أو في مدينته.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="value-card">
+              <span class="value-num">03</span>
+              <h3>رسالتنا للمجتمع</h3>
+              <p>نؤمن أن المعرفة والثقافة والرياضة حق للجميع، لذلك نعرض الفعاليات المجانية والمفتوحة أولاً، وبلغة بسيطة وواضحة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- القسم 2: فريق العمل (صورة مصغّرة + اسم + دور) -->
+    <section class="section pt-0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">من نحن</span>
+            <h2 class="section-title">فريق العمل</h2>
+            <p class="section-sub">طلاب من الجامعة الافتراضية السورية عملوا على تصميم الدليل وبرمجته.</p>
+          </div>
+        </div>
+        <!-- ===== أسماء الفريق في صفحة عن الدليل: عدّلها هنا ===== -->
+        <div class="row g-4">
+          <div class="col-sm-6 col-md-4">
+            <article class="team-card">
+              <img src="assets/img/team-1.jpg" alt="حاسب محمول وهاتف: برمجة JavaScript" loading="lazy">
+              <h3>وسام</h3>
+              <p class="role">قائد المشروع وبرمجة JavaScript</p>
+              <span class="member-id">ID: Wesam_291213</span>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <article class="team-card">
+              <img src="assets/img/team-2.jpg" alt="أدوات تصميم على مكتب: تصميم الواجهات" loading="lazy">
+              <h3>ياسمين</h3>
+              <p class="role">تصميم الواجهات و CSS</p>
+              <span class="member-id">ID: yasmine_305124</span>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <article class="team-card">
+              <img src="assets/img/team-3.jpg" alt="أوراق وقلم: كتابة المحتوى" loading="lazy">
+              <h3>علاء بكيره</h3>
+              <p class="role">المحتوى والاختبار والاستضافة</p>
+              <span class="member-id">ID: alaa_241456</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- القسم 3: سياسات بسيطة -->
+    <section class="section pt-0">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="info-card h-100">
+              <span class="eyebrow">سياسات</span>
+              <h2 class="h3 mb-4">كيف تقدّم فعالية؟</h2>
+              <ol class="steps">
+                <li><strong>املأ نموذج التواصل</strong><span>من صفحة "اتصل بنا" اختر موضوع "اقتراح فعالية".</span></li>
+                <li><strong>أرسل التفاصيل الأساسية</strong><span>العنوان، التاريخ والوقت، المكان، الجهة المنظمة، وصورة معبّرة.</span></li>
+                <li><strong>المراجعة خلال يومي عمل</strong><span>يتأكد الفريق من المعلومات ويتواصل معك عند الحاجة.</span></li>
+                <li><strong>النشر في الدليل</strong><span>تظهر الفعالية في القائمة وفي السلايدر إذا كانت خلال الأسبوع.</span></li>
+              </ol>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="info-card h-100">
+              <span class="eyebrow">معايير النشر</span>
+              <h2 class="h3 mb-4">ما الذي ننشره؟</h2>
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>فعاليات تعليمية أو ثقافية أو رياضية أو فنية أو عائلية تهم الطلاب.</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>معلومات كاملة وصحيحة: تاريخ ووقت ومكان واضح وجهة منظمة معروفة.</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>محتوى محترم يناسب جميع الفئات العمرية، وخالٍ من الإساءة.</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>أولوية للفعاليات المجانية أو ذات الرسوم الرمزية.</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>صور مملوكة للجهة المنظمة أو مجانية الاستخدام.</span></li>
+              </ul>
+              <a href="contact.html" class="btn btn-brand mt-2">اقترح فعالية الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER: التواصل + حقوق النشر + فريق العمل ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="brand mb-3" href="index.html">
+            <span class="brand-mark" aria-hidden="true"><i class="bi bi-calendar2-event"></i></span>
+            <span>
+              <span class="brand-name">دليل الفعاليات</span>
+              <span class="brand-sub">الجامعة الافتراضية السورية</span>
+            </span>
+          </a>
+          <p>دليل يجمع فعاليات الجامعة الافتراضية السورية وفعاليات المدينة في مكان واحد، حتى لا تفوتك أي ندوة أو ورشة أو أمسية.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="إنستغرام"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="يوتيوب"><i class="bi bi-youtube"></i></a>
+            <a href="https://telegram.org/" target="_blank" rel="noopener" aria-label="تلغرام"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2>روابط سريعة</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="events.html">كل الفعاليات</a></li>
+            <li><a href="about.html">عن الدليل</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2>تواصل معنا</h2>
+          <ul class="footer-links">
+            <li><i class="bi bi-envelope ms-2"></i><a href="mailto:events@example.edu">events@example.edu</a></li>
+            <li><i class="bi bi-telephone ms-2"></i><a href="tel:+963110000000" dir="ltr">+963 11 000 0000</a></li>
+            <li><i class="bi bi-geo-alt ms-2"></i>دمشق - سوريا</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2>فريق المشروع</h2>
+          <!-- ===== أسماء فريق العمل وأرقامهم الجامعية (شرط إلزامي): عدّلها هنا ===== -->
+          <ul class="team-list">
+            <li><span class="member-name">وسام</span><span class="member-id">ID: Wesam_291213</span></li>
+            <li><span class="member-name">ياسمين</span><span class="member-id">ID: yasmine_305124</span></li>
+            <li><span class="member-name">علاء بكيره</span><span class="member-id">ID: alaa_241456</span></li>
+          </ul>
+          <!-- ===== نهاية أسماء الفريق ===== -->
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">© 2026 دليل فعاليات الجامعة الافتراضية. جميع الحقوق محفوظة.</p>
+        <p class="mb-0">مشروع مقرر BWP401 - الجامعة الافتراضية السورية</p>
+        <p class="mb-0 w-100">مصادر الصور: صور مجانية من <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a> (عبر Lorem Picsum)، والخريطة © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">مساهمو OpenStreetMap</a>. التفاصيل في assets/img/CREDITS.md.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- زر الرجوع لأعلى الصفحة (يظهر بعد النزول) -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="الرجوع للأعلى">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap JS: لازم للهمبرغر والسلايدر والـ Modal والـ Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- البيانات أولاً، ثم الكود الذي يستخدمها -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
